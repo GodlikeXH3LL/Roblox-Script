@@ -41,7 +41,7 @@ local Tabs = {
         Icon = "phosphor-arrows-clockwise-bold"
     },
     Home = Window:CreateTab{
-         Title = "Roblox Scripts",
-         Icon = "house"
-},
+        Title = "Roblox Scripts",
+        Icon = "house"
+    }
 }
