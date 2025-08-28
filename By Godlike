@@ -2,32 +2,46 @@ local Library = safeLoad("https://github.com/ActualMasterOogway/Fluent-Renewed/r
 local SaveManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/SaveManager.luau", "Save Manager")
 local InterfaceManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau", "Interface Manager")
 
-local Library = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local Window = Library:CreateWindow({
-    Title = "Roblox Scripts",
-    SubTitle = "by Godlike",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Resize = true,
-    MinSize = Vector2.new(350, 300),
-    Acrylic = true,
-    Theme = "light",
-    MinimizeKey = Enum.KeyCode.RightControl
-})
 
-Library:Notify({
-    Title = "Welcome",
-    Content = "Enjoy my Script",
-    SubContent = "Join the discord to suggest future updates",
-    Duration = 3
-})
+local Window = Library:CreateWindow {
+    Title = "Roblox Scripts",
+    SubTitle = "By Godlike",
+    TabWidth = 125,
+    Size = UDim2.fromOffset(830, 525),
+    Resize = true,
+    MinSize = Vector2.new(470, 380),
+    Acrylic = true,
+    Theme = "Viow Mars",
+    MinimizeKey = Enum.KeyCode.RightControl
+}
 
 local Tabs = {
-    Players = Window:AddTab({ Title = "Players", Icon = "activity" }),
-    Client = Window:AddTab({ Title = "Client", Icon = "bot" }),
-    Teleports = Window:AddTab({ Title = "Teleports", Icon = "bike" }),
-    Music = Window:AddTab({ Title = "Music", Icon = "music" }),
-    BugReports = Window:AddTab({ Title = "Bug Reports", Icon = "bug" }),
-    OtherScripts = Window:AddTab({ Title = "Other Scripts", Icon = "file-archive" }),
-    Credits = Window:AddTab({ Title = "Credits", Icon = "check" })
+    Main = Window:CreateTab{
+        Title = "Main",
+        Icon = "phosphor-house-bold"
+    },
+    Players = Window:CreateTab{
+        Title = "Players",
+        Icon = "phosphor-robot-bold"
+    },
+    Client = Window:CreateTab{
+        Title = "Client",
+        Icon = "phosphor-arrows-clockwise-bold"
+    },
+    Teleports = Window:CreateTab{
+        Title = "Teleports",
+        Icon = "phosphor-sword-bold"
+    },
+    Music = Window:CreateTab{
+        Title = "Music",
+        Icon = "phosphor-sparkle-bold"
+    },
+    Discord = Window:CreateTab{
+        Title = "Discord",
+        Icon = "phosphor-arrows-clockwise-bold"
+    },
+    Home = Window:CreateTab{
+         Title = "Roblox Scripts",
+         Icon = "house"
+},
 }
