@@ -1,0 +1,29 @@
+local Library = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Roblox Scripts"
+    SubTitle = "by Godlike",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Resize = true,
+    MinSize = Vector2.new(350, 300),
+    Acrylic = true,
+    Theme = "light",
+    MinimizeKey = Enum.KeyCode.RightControl
+})
+
+Fluent:Notify({
+        Title = "Welcome",
+        Content = "Enjoy my Script",
+        SubContent = "Join the discord to suggest future updates", -- Optional
+        Duration = 3 -- Set to nil to make the notification not disappear
+})
+
+local Tabs = {
+    Players = Window:AddTab({ Title = "Players", Icon = "dna" }),
+    Client = Window:AddTab({ Title = "Client", Icon = "dna-off" })
+    Teleports = Window:AddTab({ Title = "Teleports", Icon = "door-open" })
+    Music = Window:AddTab({ Title = "Music", Icon = "music" })
+    Bug Reports = Window:AddTab({ Title = "Bug Reports", Icon = "bug" })
+    Other Scripts = Window:AddTab({ Title = "Other Scripts", Icon = "file-archive" })
+    Credits = Window:AddTab({ Title = "Credits", Icon = "wallet-cards" })
+}
