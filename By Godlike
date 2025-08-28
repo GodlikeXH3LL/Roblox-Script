@@ -7,6 +7,7 @@ local window = library:AddWindow("Roblox Scripts", {
 })
 
 local Player = window:AddTab("Players")
+local folder1 = Player:AddFolder("ESP")
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -15,12 +16,12 @@ local espGuis = {}
 local espEnabled = false
 local TargetPlayerName = ""
 
-playerTab:AddSwitch("ESP ALL", function(state)
+folder1:AddSwitch("ESP ALL", function(state)
     espEnabled = state
 
     if espEnabled then
-        local nameFont = Enum.Font.Garamond
-        local distanceFont = Enum.Font.Bangers
+        local nameFont = Enum.Font.BuilderSansExtraBold
+        local distanceFont = Enum.Font.ArimoBold
         local nameColor = Color3.fromRGB(255, 255, 255)
         local distanceColor = Color3.fromRGB(255, 0, 0)
         local textSize = 17
