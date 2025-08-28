@@ -1,6 +1,6 @@
 local Library = safeLoad("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau", "Fluent Library")
-local SaveManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/SaveManager.luau", "Save Manager")
-local InterfaceManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau", "Interface Manager")
+local SaveManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/main/Addons/SaveManager.luau", "Save Manager")
+local InterfaceManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/main/Addons/InterfaceManager.luau", "Interface Manager")
 
 local Window = Library:CreateWindow({
     Title = "Roblox Scripts",
@@ -20,7 +20,7 @@ local Tabs = {
     Client = Window:AddTab({ Title = "Client", Icon = "box" }),
     Teleports = Window:AddTab({ Title = "Teleports", Icon = "cable" }),
     Music = Window:AddTab({ Title = "Music", Icon = "music" }),
-    Bugs = Window:AddTab({ Title = "Bug Reports", Icon = "bug" })
-    Scripts = Window:AddTab({ Title = "Scripts", Icon = "file" })
+    Bugs = Window:AddTab({ Title = "Bug Reports", Icon = "bug" }),
+    Scripts = Window:AddTab({ Title = "Scripts", Icon = "file" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "check" })
 }
