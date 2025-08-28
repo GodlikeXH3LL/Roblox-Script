@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library", true))() 
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library", true))()
 
 local window = library:AddWindow("Roblox Scripts", {
     main_color = Color3.fromRGB(1, 2, 3),
@@ -9,8 +9,15 @@ local window = library:AddWindow("Roblox Scripts", {
 local Player = window:AddTab("Players")
 local folder1 = Player:AddFolder("ESP")
 
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local espGuis = {}
+local espEnabled = false
+local TargetPlayerName = ""
+
 folder1:AddSwitch("ESP ALL", function(state)
-  local espEnabled = state
+    espEnabled = state
 
     if espEnabled then
         local nameFont = Enum.Font.Garamond
@@ -18,11 +25,6 @@ folder1:AddSwitch("ESP ALL", function(state)
         local nameColor = Color3.fromRGB(255, 255, 255)
         local distanceColor = Color3.fromRGB(255, 0, 0)
         local textSize = 14
-
-        local Players = game:GetService("Players")
-        local RunService = game:GetService("RunService")
-        local LocalPlayer = Players.LocalPlayer
-        local espGuis = {}
 
         local function createESP(player)
             if player == LocalPlayer or not player.Character or not player.Character:FindFirstChild("Head") then
@@ -128,6 +130,138 @@ folder1:AddSwitch("ESP ALL", function(state)
                     createESP(player)
                 end
             end)
+        end
+
+        RunService.RenderStepped:Connect(updateESP)
+    else
+        for player, guis in pairs(espGuis or {}) do
+            for _, gui in pairs(guis) do
+                if gui then
+                    gui:Destroy()
+                end
+            end
+            espGuis[player] = nil
+        end
+    end
+end)
+
+folder1:AddTextbox("Target ESP", function(text)
+    TargetPlayerName = text
+end)
+
+folder1:AddSwitch("Target ESP", function(state)
+    espEnabled = state
+    if espEnabled then
+        local nameFont = Enum.Font.Garamond
+        local distanceFont = Enum.Font.Bangers
+        local nameColor = Color3.fromRGB(255, 255, 255)
+        local distanceColor = Color3.fromRGB(255, 0, 0)
+        local textSize = 14
+
+        local function createESP(player)
+            if player.Name ~= TargetPlayerName or player == LocalPlayer or not player.Character or not player.Character:FindFirstChild("Head") then
+                return
+            end
+
+            if espGuis[player] then
+                for _, gui in pairs(espGuis[player]) do
+                    gui:Destroy()
+                end
+                espGuis[player] = nil
+            end
+
+            espGuis[player] = {}
+
+            local billboard = Instance.new("BillboardGui")
+            billboard.Name = "ESP"
+            billboard.Adornee = player.Character.Head
+            billboard.AlwaysOnTop = true
+            billboard.Size = UDim2.new(0, 200, 0, 50)
+            billboard.StudsOffset = Vector3.new(0, 3, 0)
+            billboard.Parent = player.Character.Head
+
+            local nameLabel = Instance.new("TextLabel")
+            nameLabel.Name = "Name"
+            nameLabel.Text = player.Name
+            nameLabel.Font = nameFont
+            nameLabel.TextColor3 = nameColor
+            nameLabel.TextSize = textSize
+            nameLabel.BackgroundTransparency = 1
+            nameLabel.Size = UDim2.new(1, 0, 0.5, 0)
+            nameLabel.Position = UDim2.new(0, 0, 0, 0)
+            nameLabel.Parent = billboard
+
+            local distanceLabel = Instance.new("TextLabel")
+            distanceLabel.Name = "Distance"
+            distanceLabel.Text = "Distance: Calculating..."
+            distanceLabel.Font = distanceFont
+            distanceLabel.TextColor3 = distanceColor
+            distanceLabel.TextSize = textSize
+            distanceLabel.BackgroundTransparency = 1
+            distanceLabel.Size = UDim2.new(1, 0, 0.5, 0)
+            distanceLabel.Position = UDim2.new(0, 0, 0.5, 0)
+            distanceLabel.Parent = billboard
+
+            local highlight = Instance.new("Highlight")
+            highlight.Name = "ESPHighlight"
+            highlight.Adornee = player.Character
+            highlight.OutlineColor = Color3.fromRGB(255, 0, 0)
+            highlight.FillTransparency = 1
+            highlight.OutlineTransparency = 0
+            highlight.Parent = player.Character
+
+            espGuis[player].Billboard = billboard
+            espGuis[player].Highlight = highlight
+        end
+
+        local function updateESP()
+            if not espEnabled then return end
+
+            local localChar = LocalPlayer.Character
+            if not localChar or not localChar:FindFirstChild("HumanoidRootPart") then return end
+
+            local localPos = localChar.HumanoidRootPart.Position
+
+            for player, guis in pairs(espGuis) do
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local targetPos = player.Character.HumanoidRootPart.Position
+                    local distance = (localPos - targetPos).Magnitude
+                    guis.Billboard.Distance.Text = string.format("Distance: %.1f studs", distance)
+                else
+                    for _, gui in pairs(guis) do
+                        gui:Destroy()
+                    end
+                    espGuis[player] = nil
+                end
+            end
+        end
+
+        Players.PlayerAdded:Connect(function(player)
+            if player.Name == TargetPlayerName then
+                player.CharacterAdded:Connect(function()
+                    if espEnabled then
+                        createESP(player)
+                    end
+                end)
+                if player.Character then
+                    createESP(player)
+                end
+            end
+        end)
+
+        Players.PlayerRemoving:Connect(function(player)
+            if espGuis[player] then
+                for _, gui in pairs(espGuis[player]) do
+                    gui:Destroy()
+                end
+                espGuis[player] = nil
+            end
+        end)
+
+        for _, player in ipairs(Players:GetPlayers()) do
+            if player.Name == TargetPlayerName and player ~= LocalPlayer and player.Character then
+                createESP(player)
+            end
         end
 
         RunService.RenderStepped:Connect(updateESP)
