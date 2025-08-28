@@ -14,33 +14,13 @@ local Window = Library:CreateWindow({
     MinimizeKey = Enum.KeyCode.RightControl
 })
 
+-- Fluent provides Lucide Icons, they are optional
 local Tabs = {
-    Main = Window:CreateTab({
-        Title = "Main",
-        Icon = "phosphor-house-bold"
-    }),
-    Players = Window:CreateTab({
-        Title = "Players",
-        Icon = "phosphor-robot-bold"
-    }),
-    Client = Window:CreateTab({
-        Title = "Client",
-        Icon = "phosphor-arrows-clockwise-bold"
-    }),
-    Teleports = Window:CreateTab({
-        Title = "Teleports",
-        Icon = "phosphor-sword-bold"
-    }),
-    Music = Window:CreateTab({
-        Title = "Music",
-        Icon = "phosphor-sparkle-bold"
-    }),
-    Discord = Window:CreateTab({
-        Title = "Discord",
-        Icon = "phosphor-arrows-clockwise-bold"
-    }),
-    Home = Window:CreateTab({
-        Title = "Roblox Scripts",
-        Icon = "house"
-    })
+    Players = Window:AddTab({ Title = "Players", Icon = "bot" }),
+    Client = Window:AddTab({ Title = "Client", Icon = "box" }),
+    Teleports = Window:AddTab({ Title = "Teleports", Icon = "cable" }),
+    Music = Window:AddTab({ Title = "Music", Icon = "music" }),
+    Bugs = Window:AddTab({ Title = "Bug Reports", Icon = "bug" })
+    Scripts = Window:AddTab({ Title = "Scripts", Icon = "file" })
+    Credits = Window:AddTab({ Title = "Credits", Icon = "check" })
 }
