@@ -7,7 +7,6 @@ local window = library:AddWindow("Roblox Scripts", {
 })
 
 local Player = window:AddTab("Players")
-local folder1 = Player:AddFolder("ESP")
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
