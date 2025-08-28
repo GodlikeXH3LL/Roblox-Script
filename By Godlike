@@ -6,7 +6,7 @@ local window = library:AddWindow("Roblox Scripts", {
     can_resize = false,
 })
 
-local Player = Window:AddTab("Players")
+local Player = window:AddTab("Players")
 local folder1 = Player:AddFolder("ESP")
 
 folder1:AddSwitch("ESP ALL", function(state)
