@@ -2,8 +2,7 @@ local Library = safeLoad("https://github.com/ActualMasterOogway/Fluent-Renewed/r
 local SaveManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/SaveManager.luau", "Save Manager")
 local InterfaceManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau", "Interface Manager")
 
-
-local Window = Library:CreateWindow {
+local Window = Library:CreateWindow({
     Title = "Roblox Scripts",
     SubTitle = "By Godlike",
     TabWidth = 125,
@@ -13,35 +12,35 @@ local Window = Library:CreateWindow {
     Acrylic = true,
     Theme = "Viow Mars",
     MinimizeKey = Enum.KeyCode.RightControl
-}
+})
 
 local Tabs = {
-    Main = Window:CreateTab{
+    Main = Window:CreateTab({
         Title = "Main",
         Icon = "phosphor-house-bold"
-    },
-    Players = Window:CreateTab{
+    }),
+    Players = Window:CreateTab({
         Title = "Players",
         Icon = "phosphor-robot-bold"
-    },
-    Client = Window:CreateTab{
+    }),
+    Client = Window:CreateTab({
         Title = "Client",
         Icon = "phosphor-arrows-clockwise-bold"
-    },
-    Teleports = Window:CreateTab{
+    }),
+    Teleports = Window:CreateTab({
         Title = "Teleports",
         Icon = "phosphor-sword-bold"
-    },
-    Music = Window:CreateTab{
+    }),
+    Music = Window:CreateTab({
         Title = "Music",
         Icon = "phosphor-sparkle-bold"
-    },
-    Discord = Window:CreateTab{
+    }),
+    Discord = Window:CreateTab({
         Title = "Discord",
         Icon = "phosphor-arrows-clockwise-bold"
-    },
-    Home = Window:CreateTab{
+    }),
+    Home = Window:CreateTab({
         Title = "Roblox Scripts",
         Icon = "house"
-    }
+    })
 }
