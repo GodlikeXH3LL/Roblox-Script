@@ -25,9 +25,9 @@ Library:Notify({
 local Tabs = {
     Players = Window:AddTab({ Title = "Players", Icon = "activity" }),
     Client = Window:AddTab({ Title = "Client", Icon = "bot" }),
-    Teleports = Window:AddTab({ Title = "Teleports", Icon = "cctv" }),
+    Teleports = Window:AddTab({ Title = "Teleports", Icon = "bike" }),
     Music = Window:AddTab({ Title = "Music", Icon = "music" }),
     BugReports = Window:AddTab({ Title = "Bug Reports", Icon = "bug" }),
     OtherScripts = Window:AddTab({ Title = "Other Scripts", Icon = "file-archive" }),
-    Credits = Window:AddTab({ Title = "Credits", Icon = "book-check" })
+    Credits = Window:AddTab({ Title = "Credits", Icon = "check" })
 }
