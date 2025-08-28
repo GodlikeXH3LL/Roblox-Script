@@ -20,11 +20,11 @@ folder1:AddSwitch("ESP ALL", function(state)
     espEnabled = state
 
     if espEnabled then
-        local nameFont = Enum.Font.BuilderSansExtraBold
-        local distanceFont = Enum.Font.ArimoBold
+        local nameFont = Enum.Font.Garamond
+        local distanceFont = Enum.Font.Bangers
         local nameColor = Color3.fromRGB(255, 255, 255)
         local distanceColor = Color3.fromRGB(255, 0, 0)
-        local textSize = 17
+        local textSize = 15
 
         local function createESP(player)
             if player == LocalPlayer or not player.Character or not player.Character:FindFirstChild("Head") then
