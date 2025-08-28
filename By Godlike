@@ -16,7 +16,7 @@ local espGuis = {}
 local espEnabled = false
 local TargetPlayerName = ""
 
-folder1:AddSwitch("ESP ALL", function(state)
+playerTab:AddSwitch("ESP ALL", function(state)
     espEnabled = state
 
     if espEnabled then
@@ -24,7 +24,7 @@ folder1:AddSwitch("ESP ALL", function(state)
         local distanceFont = Enum.Font.Bangers
         local nameColor = Color3.fromRGB(255, 255, 255)
         local distanceColor = Color3.fromRGB(255, 0, 0)
-        local textSize = 14
+        local textSize = 17
 
         local function createESP(player)
             if player == LocalPlayer or not player.Character or not player.Character:FindFirstChild("Head") then
@@ -145,22 +145,4 @@ folder1:AddSwitch("ESP ALL", function(state)
     end
 end)
 
-folder1:AddDropdown("Target ESP", function(text)
-    local Players = game:GetService("Players")
-    
-local function getAllPlayerUsernames()
-    local usernames = {}
-    
-    for _, player in pairs(Players:GetPlayers()) do
-        table.insert(usernames, player.Name)
-    end
-    
-    return usernames
-end
-    
-local playerUsernames = getAllPlayerUsernames()
-    
-for i, username in ipairs(playerUsernames) do
-    print(i .. ": " .. username)
-end
-end)
+
